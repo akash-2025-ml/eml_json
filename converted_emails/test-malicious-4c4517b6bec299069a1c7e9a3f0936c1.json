@@ -50,7 +50,7 @@
         "content": "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0 Transitional//EN\">\n<HTML><HEAD>\n<META http-equiv=Content-Type content=\"text/html; charset=iso-8859-1\">\n<META content=\"MSHTML 6.00.2900.2995\" name=GENERATOR>\n<STYLE></STYLE>\n</HEAD>\n<BODY bgColor=#ffffff>\n<DIV><FONT face=Arial size=2><A href=\"http://wjeikd.cardpreyer.info/?76343673\"><IMG alt=\"\" hspace=0 \nsrc=\"cid:------------ms010409060500010009020306@Stephen\" align=baseline \nborder=0></A></FONT></DIV></BODY></HTML>\n"
       },
       "hasAttachments": true,
-      "internetMessageId": "<8e5a947d-0035-4538-9b18-218acf5337a6@generated>",
+      "internetMessageId": "<633ba85c-6432-47dd-bb01-dab7e1b35f56@generated>",
       "importance": "normal",
       "isRead": false,
       "isDraft": false,
@@ -59,8 +59,8 @@
       }
     },
     "headers": {
-      "spf": "none",
-      "dkim": "none",
+      "spf": "pass",
+      "dkim": "fail",
       "dmarc": "none",
       "returnpath": "catrina.lucero@enron.com",
       "ipaddress": [

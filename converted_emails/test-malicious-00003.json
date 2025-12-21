@@ -47,12 +47,12 @@
       }
     },
     "headers": {
-      "spf": "none",
-      "dkim": "none",
-      "dmarc": "none",
+      "spf": "pass",
+      "dkim": "pass",
+      "dmarc": "pass",
       "returnpath": "merchantsworld2001@juno.com",
       "ipaddress": [
-        "2603:1096:a01:af:cafe::"
+        "213.105.180.140"
       ],
       "smtpserver": "PN2P287MB0160.INDP287.PROD.OUTLOOK.COM",
       "tlsversion": "not available",

@@ -47,12 +47,12 @@
       }
     },
     "headers": {
-      "spf": "none",
+      "spf": "fail",
       "dkim": "none",
-      "dmarc": "none",
+      "dmarc": "fail",
       "returnpath": "ilug-admin@linux.ie",
       "ipaddress": [
-        "2603:1096:a01:af:cafe::"
+        "127.0.0.1"
       ],
       "smtpserver": "PN2P287MB0160.INDP287.PROD.OUTLOOK.COM",
       "tlsversion": "not available",

@@ -38,7 +38,7 @@
         "content": "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0 Transitional//EN\">\n<HTML><HEAD>\n<META http-equiv=Content-Type content=\"text/html; charset=windows-1250\">\n<META content=\"MSHTML 6.00.3790.2663\" name=GENERATOR>\n<STYLE></STYLE>\n</HEAD>\n<BODY>\n<FONT face=Arial size=2>\n<DIV align=Center><IMG alt=\"\" hspace=0 src=\"cid:006901c79233$360086a0$6c822ecf@BD37967\" align=baseline border=0></DIV></FONT>\n<DIV>For any part of them we can make out<br>Choces, M&#232;re and P&#232;re, undreaming even of fields<br>The edge of that other square cut from the right<br>Again awaken from your being gone to find<br>and the Splendid Splinter. For a few dreamy dollars,<br>And half-starved foxes shake and paw<br>I seek, above all, in the wandering<br>A matter of getting all that right . . .<br>Among us, only Alberti, then Sangallo,<br>Empty streets I come upon by chance,<br>Where, as I discover as I go through<br>From point to point of meaning—open? closed?—<br>Alberti, Brunelleschi, Sangallo,<br>At four, the spectators leave in pairs, off<br>When Arctic winds crack down from Canada<br>Like an old soldier, wakeful, in his tent!<br>With sun's warmth wasted on a stone,<br>Between the high and the low, in this night.<br>I. Further Exploration of Spitsbergen<br></DIV>\n</BODY></HTML>\n"
       },
       "hasAttachments": true,
-      "internetMessageId": "<ff08ffcb-2a00-482e-bdf9-1e4303cbbe2b@generated>",
+      "internetMessageId": "<576c75f9-c400-4e3e-89ef-1aa3297d3e10@generated>",
       "importance": "normal",
       "isRead": false,
       "isDraft": false,
@@ -47,12 +47,12 @@
       }
     },
     "headers": {
-      "spf": "none",
-      "dkim": "none",
-      "dmarc": "none",
+      "spf": "neutral",
+      "dkim": "pass",
+      "dmarc": "fail",
       "returnpath": "richard_raubertas@merck.com",
       "ipaddress": [
-        "2603:1096:a01:af:cafe::"
+        "2603:1096:c01:19c::"
       ],
       "smtpserver": "PN2P287MB0160.INDP287.PROD.OUTLOOK.COM",
       "tlsversion": "not available",

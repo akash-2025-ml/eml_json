@@ -4,12 +4,27 @@ import json
 import os
 import re
 import base64
+import random
 from datetime import datetime
 from email import policy
 from email.utils import parseaddr, formataddr, parsedate_to_datetime
 import uuid
 import html
 from pathlib import Path
+
+# Constants for random selection
+SPF_DKIM_VALUES = ["pass", "fail", "none", "neutral"]
+DMARC_VALUES = ["pass", "fail", "none"]
+IP_ADDRESSES = [
+    "2603:1096:c01:19c::",
+    "2603:1096:a01:af::",
+    "2603:1096:a01:af:cafe::",
+    "2a01:111:f403:c409::",
+    "2603:1096:a04::",
+    "2603:1096:c01:ec::",
+    "2603:1096:a01:1c7::",
+    "fe80::"
+]
 
 
 def validate_and_fix_email(email_str):
@@ -235,25 +250,63 @@ def parse_eml_to_json(eml_path, tenant_id="2a9c5f75-c7ee-4b9f-9ccc-626ddcbd786a"
     
     # Extract SPF, DKIM, DMARC from headers (if available)
     auth_results = msg.get('Authentication-Results', '')
-    spf_result = "none"
-    dkim_result = "none"
-    dmarc_result = "none"
+    spf_result = None
+    dkim_result = None
+    dmarc_result = None
     
     if auth_results:
+        # Check for SPF
         if 'spf=pass' in auth_results:
             spf_result = "pass"
         elif 'spf=fail' in auth_results:
             spf_result = "fail"
+        elif 'spf=neutral' in auth_results:
+            spf_result = "neutral"
+        elif 'spf=none' in auth_results:
+            spf_result = "none"
         
+        # Check for DKIM
         if 'dkim=pass' in auth_results:
             dkim_result = "pass"
         elif 'dkim=fail' in auth_results:
             dkim_result = "fail"
+        elif 'dkim=neutral' in auth_results:
+            dkim_result = "neutral"
+        elif 'dkim=none' in auth_results:
+            dkim_result = "none"
         
+        # Check for DMARC
         if 'dmarc=pass' in auth_results:
             dmarc_result = "pass"
         elif 'dmarc=fail' in auth_results:
             dmarc_result = "fail"
+        elif 'dmarc=none' in auth_results:
+            dmarc_result = "none"
+    
+    # Use random values if not found in headers
+    if spf_result is None:
+        spf_result = random.choice(SPF_DKIM_VALUES)
+    if dkim_result is None:
+        dkim_result = random.choice(SPF_DKIM_VALUES)
+    if dmarc_result is None:
+        dmarc_result = random.choice(DMARC_VALUES)
+    
+    # Extract IP address from Received headers or use random
+    ip_address = None
+    received_headers = msg.get_all('Received', [])
+    for received in received_headers:
+        # Look for IP addresses in brackets
+        ip_match = re.search(r'\[(\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3})\]', received)
+        if not ip_match:
+            # Look for IPv6 addresses
+            ip_match = re.search(r'\[([0-9a-fA-F:]+)\]', received)
+        if ip_match:
+            ip_address = ip_match.group(1)
+            break
+    
+    # Use random IP if not found
+    if not ip_address:
+        ip_address = random.choice(IP_ADDRESSES)
     
     # Create unique message ID with test-malicious format
     filename_without_ext = os.path.splitext(os.path.basename(eml_path))[0]
@@ -306,7 +359,7 @@ def parse_eml_to_json(eml_path, tenant_id="2a9c5f75-c7ee-4b9f-9ccc-626ddcbd786a"
                 "dkim": dkim_result,
                 "dmarc": dmarc_result,
                 "returnpath": return_path,
-                "ipaddress": ["2603:1096:a01:af:cafe::"],
+                "ipaddress": [ip_address],
                 "smtpserver": "PN2P287MB0160.INDP287.PROD.OUTLOOK.COM",
                 "tlsversion": "not available",
                 "list_unsubscribe_urls": [],

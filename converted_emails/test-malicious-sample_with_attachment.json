@@ -47,9 +47,9 @@
       }
     },
     "headers": {
-      "spf": "none",
-      "dkim": "none",
-      "dmarc": "none",
+      "spf": "pass",
+      "dkim": "fail",
+      "dmarc": "fail",
       "returnpath": "sender@example.com",
       "ipaddress": [
         "2603:1096:a01:af:cafe::"
