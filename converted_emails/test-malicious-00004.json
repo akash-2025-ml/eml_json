@@ -48,8 +48,8 @@
     },
     "headers": {
       "spf": "pass",
-      "dkim": "fail",
-      "dmarc": "none",
+      "dkim": "pass",
+      "dmarc": "pass",
       "returnpath": "merchantsworld2001@juno.com",
       "ipaddress": [
         "213.105.180.140"
@@ -64,10 +64,20 @@
       "content": "*****Bonus Fat Absorbers As Seen On TV, Included Free With Purchase Of 2 Or More Bottle, $24.95 Value***** ***TAKE $10.00 OFF 2 & 3 MONTH SUPPLY ORDERS, $5.00 OFF 1 MONTH SUPPLY! ***AND STILL GET YOUR BONUS! PRICE WILL BE DEDUCTED DURING PROCESSING. ***FAT ABSORBERS ARE GREAT FOR THOSE WHO WANT TO LOSE WEIGHT, BUT CAN'T STAY ON A DIET*** ***OFFER GOOD UNTIL MAY 27, 2002! FOREIGN ORDERS INCLUDED! LOSE 30 POUNDS IN 30 DAYS... GUARANTEED!!! All Natural Weight-Loss Program, Speeds Up The Metabolism ",
       "links": [
         "http://www.geocities.com/ultra_weightloss_2002/",
-        "http://www.geocities.com/ultra_weightloss_2002/"
+        "http://aol.com",
+        "http://aol.com</",
+        "http://www.geocities.com/",
+        "http://yahoo.com"
       ],
       "domains": [
-        "http://www.geocities.com"
+        "https://geocities.com",
+        "http://yahoo.com",
+        "https://yahoo.com",
+        "http://aol.com",
+        "https://aol.com<",
+        "http://aol.com<",
+        "http://www.geocities.com",
+        "https://aol.com"
       ]
     }
   }

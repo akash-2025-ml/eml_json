@@ -1,0 +1,6 @@
+Subject: Test Random Email Generation
+Date: Mon, 15 Jan 2024 10:30:00 +0000
+Message-ID: <testrandom@example.com>
+
+Testing random email generation when no From/To headers are present.
+EOF < /dev/null

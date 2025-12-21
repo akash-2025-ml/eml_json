@@ -1,0 +1,20 @@
+From: tester@example.com
+To: recipient@example.com
+Subject: Test Links Extraction
+Date: Mon, 15 Jan 2024 10:30:00 +0000
+Message-ID: <testlinks@example.com>
+
+Check out these links:
+
+Visit our website: https://example.com/page1
+See our shop at www.shop.example.com
+Our FTP server: ftp://files.example.com/downloads
+
+You can also visit:
+- example.org (our organization site)
+- http://blog.example.net/posts/latest
+- Download from https://cdn.example.io/files/document.pdf
+
+Contact us: info@example.com or visit <https://support.example.com>
+
+More info at (http://help.example.com/guide)

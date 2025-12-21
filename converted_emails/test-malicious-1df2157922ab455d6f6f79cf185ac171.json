@@ -38,7 +38,7 @@
         "content": "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0 Transitional//EN\">\n<HTML><HEAD>\n<META http-equiv=Content-Type content=\"text/html; charset=iso-8859-1\">\n<META content=\"MSHTML 5.00.2919.6700\" name=GENERATOR>\n<STYLE></STYLE>\n</HEAD>\n<BODY>\n<FONT face=Arial size=2>\n<DIV align=Center><IMG alt=\"\" hspace=0 src=\"cid:006901c7a676$d657d2a0$6c822ecf@5425BDA3\" align=baseline border=0></DIV></FONT>\n<DIV>I've drifted somewhat from the distant heart<br>IX. After the Great Northern Expedition<br>Coextensive with everything? How could they know?<br>Not daring to oppose<br>Away, my songs, must we go<br>That images of roads, whether composed<br>Blurring the terrain,<br>grow hot in the parking lot, though they're<br>As distant memories, through the fog-dimmed light,<br>What? What can you do?<br>Late February, and the air's so balmy<br>Is the moon to grow<br>In a single floral stroke,<br>and the numbed yards will go back undercover.<br>And then I go on until I am beneath an archway,<br>This perfection, this absence.<br>will be penciled on the coffeeshop menus.<br>Of too much truth to do much more than lie<br>Seems reflected in the infinite of the lamps.<br></DIV>\n</BODY></HTML>\n"
       },
       "hasAttachments": true,
-      "internetMessageId": "<b95c43a6-053c-423f-9cdc-dcdcca71c6d2@generated>",
+      "internetMessageId": "<dceb7eed-cee5-4b9c-a483-6794d6778068@generated>",
       "importance": "normal",
       "isRead": false,
       "isDraft": false,
@@ -48,11 +48,11 @@
     },
     "headers": {
       "spf": "fail",
-      "dkim": "neutral",
-      "dmarc": "fail",
+      "dkim": "fail",
+      "dmarc": "pass",
       "returnpath": "bansouvik@gmail.com",
       "ipaddress": [
-        "2a01:111:f403:c409::"
+        "2603:1096:a01:1c7::"
       ],
       "smtpserver": "PN2P287MB0160.INDP287.PROD.OUTLOOK.COM",
       "tlsversion": "not available",

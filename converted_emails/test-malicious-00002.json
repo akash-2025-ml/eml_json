@@ -47,8 +47,8 @@
       }
     },
     "headers": {
-      "spf": "none",
-      "dkim": "fail",
+      "spf": "neutral",
+      "dkim": "neutral",
       "dmarc": "none",
       "returnpath": "merchantsworld2001@juno.com",
       "ipaddress": [
@@ -64,10 +64,17 @@
       "content": "The Need For Safety Is Real In 2002, You Might Only Get One Chance - Be Ready! Free Shipping & Handling Within The (USA) If You Order Before May 25, 2002! 3 Day Super Sale, Now Until May 7, 2002! Save Up To $30.00 On Some Items! IT'S GETTING TO BE SPRING AGAIN, PROTECT YOURSELF AS YOU WALK, JOG AND EXERCISE OUTSIDE. ALSO PROTECT YOUR LOVED ONES AS THEY RETURN HOME FROM COLLEGE! * LEGAL PROTECTION FOR COLLEGE STUDENTS! * GREAT UP'COMING OUTDOOR PROTECTION GIFTS! * THERE IS NOTHING WORTH MORE PROT",
       "links": [
         "http://www.geocities.com/realprotection_20022003/",
-        "http://www.geocities.com/realprotection_20022003/"
+        "http://aol.com",
+        "http://aol.com</",
+        "http://www.geocities.com/"
       ],
       "domains": [
-        "http://www.geocities.com"
+        "https://geocities.com",
+        "http://aol.com",
+        "https://aol.com<",
+        "http://aol.com<",
+        "http://www.geocities.com",
+        "https://aol.com"
       ]
     }
   }

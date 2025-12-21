@@ -1,0 +1,9 @@
+From: "John Doe" john.doe [at] example [dot] com
+To: jane@company.co.uk, Bob Smith <bob@email.com>, alice at test dot org
+Cc: "Test, User" <test.user@domain.com>
+Reply-To: noreply@example.com
+Subject: Test problematic emails
+Date: Mon, 15 Jan 2024 10:30:00 +0000
+Message-ID: <test123@example.com>
+
+This is a test email with various email formats.

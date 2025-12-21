@@ -47,9 +47,9 @@
       }
     },
     "headers": {
-      "spf": "fail",
-      "dkim": "none",
-      "dmarc": "fail",
+      "spf": "none",
+      "dkim": "fail",
+      "dmarc": "none",
       "returnpath": "ilug-admin@linux.ie",
       "ipaddress": [
         "127.0.0.1"
@@ -62,8 +62,13 @@
     },
     "payload": {
       "content": "Greetings!\n\nYou are receiving this letter because you have expressed an interest in \nreceiving information about online business opportunities. If this is \nerroneous then please accept my most sincere apology. This is a one-time \nmailing, so no removal is necessary.\n\nIf you've been burned, betrayed, and back-stabbed by multi-level marketing, \nMLM, then please read this letter. It could be the most important one that \nhas ever landed in your Inbox.\n\nMULTI-LEVEL MARKETING IS A HUGE MISTAKE FOR MOS",
-      "links": [],
-      "domains": []
+      "links": [
+        "http://www.linux.ie/mailman/listinfo/ilug"
+      ],
+      "domains": [
+        "http://www.linux.ie",
+        "https://linux.ie"
+      ]
     }
   }
 }

@@ -27,28 +27,127 @@ IP_ADDRESSES = [
 ]
 
 
+def generate_random_email():
+    """Generate a random unique email address"""
+    import string
+    
+    # Generate random username components
+    # Random first name (5-8 characters)
+    first_part = ''.join(random.choices(string.ascii_lowercase, k=random.randint(5, 8)))
+    
+    # Random number or middle part
+    middle_options = [
+        ''.join(random.choices(string.digits, k=random.randint(2, 4))),  # numbers like 23, 456, 8901
+        ''.join(random.choices(string.ascii_lowercase, k=random.randint(3, 5))),  # letters
+        '_' + ''.join(random.choices(string.ascii_lowercase, k=random.randint(3, 5))),  # with underscore
+        '.' + ''.join(random.choices(string.ascii_lowercase, k=random.randint(3, 5))),  # with dot
+        ''  # sometimes no middle part
+    ]
+    middle_part = random.choice(middle_options)
+    
+    # Random last part (optional)
+    if random.random() > 0.5:
+        last_part = random.choice(['', '_' + str(random.randint(1, 999)), str(random.randint(1970, 2025))])
+    else:
+        last_part = ''
+    
+    # Combine username parts
+    username = first_part + middle_part + last_part
+    
+    # Generate random domain
+    domain_names = [
+        ''.join(random.choices(string.ascii_lowercase, k=random.randint(4, 8))),  # random domain
+        random.choice(['mail', 'email', 'web', 'net', 'online', 'digital', 'tech', 'cloud', 'cyber', 'data']) + 
+        random.choice(['box', 'hub', 'zone', 'spot', 'link', 'base', 'core', ''])
+    ]
+    
+    domain_name = random.choice(domain_names)
+    
+    # Random TLD
+    common_tlds = ['com', 'net', 'org', 'io', 'co', 'info', 'biz', 'me', 'email', 'online']
+    regional_tlds = ['us', 'uk', 'ca', 'au', 'de', 'fr', 'jp', 'in', 'br', 'mx']
+    compound_tlds = ['co.uk', 'co.jp', 'co.in', 'com.au', 'com.br', 'org.uk']
+    
+    # Weight towards common TLDs
+    tld_choice = random.random()
+    if tld_choice < 0.7:
+        tld = random.choice(common_tlds)
+    elif tld_choice < 0.85:
+        tld = random.choice(regional_tlds)
+    else:
+        tld = random.choice(compound_tlds)
+    
+    # Final email
+    email = f"{username}@{domain_name}.{tld}"
+    
+    # Ensure valid email format
+    email = email.replace('..', '.').replace('__', '_').replace('-.', '.').replace('.-', '.')
+    
+    return email.lower()
+
+
 def validate_and_fix_email(email_str):
     """Validate and fix email addresses"""
     if not email_str:
         return ""
     
-    # Parse email address
+    # First, try using parseaddr
     name, addr = parseaddr(email_str)
     
-    # Basic email validation pattern
-    email_pattern = r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$'
+    # Enhanced email validation pattern that handles more cases
+    # This pattern handles:
+    # - Standard emails: user@domain.com
+    # - Emails with dots: user.name@domain.com
+    # - Emails with special chars: user+tag@domain.com
+    # - Emails with underscores: user_name@domain.com
+    # - Emails with hyphens: user-name@domain.com
+    # - Domains with multiple dots: user@mail.domain.co.uk
+    email_pattern = r'^[a-zA-Z0-9][a-zA-Z0-9._%+-]*@[a-zA-Z0-9][a-zA-Z0-9.-]*\.[a-zA-Z]{2,}$'
     
-    # If the address part is valid, return it
+    # If parseaddr found a valid address, validate and return it
     if addr and re.match(email_pattern, addr):
-        return addr
+        return addr.lower()  # Normalize to lowercase
     
-    # Try to extract email from the string
-    email_match = re.search(r'[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}', email_str)
-    if email_match:
-        return email_match.group(0)
+    # Clean the input string
+    email_str = email_str.strip()
     
-    # If no valid email found, return the original (will need manual correction)
-    return email_str.strip()
+    # Remove angle brackets if present
+    email_str = re.sub(r'[<>]', '', email_str)
+    
+    # Remove quotes if present
+    email_str = email_str.strip('"\'')
+    
+    # Try to extract email from the string with a more flexible pattern
+    # This pattern is more forgiving and tries to find anything that looks like an email
+    email_patterns = [
+        r'([a-zA-Z0-9][a-zA-Z0-9._%+-]*@[a-zA-Z0-9][a-zA-Z0-9.-]*\.[a-zA-Z]{2,})',
+        r'([a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,})',
+        r'([\w\.-]+@[\w\.-]+\.[\w]+)'
+    ]
+    
+    for pattern in email_patterns:
+        email_match = re.search(pattern, email_str, re.IGNORECASE)
+        if email_match:
+            extracted_email = email_match.group(1).lower()
+            # Final validation
+            if re.match(email_pattern, extracted_email):
+                return extracted_email
+    
+    # Handle special cases like "email at domain dot com"
+    # Convert common obfuscations
+    email_str = re.sub(r'\s+at\s+', '@', email_str, flags=re.IGNORECASE)
+    email_str = re.sub(r'\s+dot\s+', '.', email_str, flags=re.IGNORECASE)
+    email_str = re.sub(r'\[at\]', '@', email_str, flags=re.IGNORECASE)
+    email_str = re.sub(r'\[dot\]', '.', email_str, flags=re.IGNORECASE)
+    email_str = re.sub(r'\s+', '', email_str)  # Remove all spaces
+    
+    # Try again after deobfuscation
+    if re.match(email_pattern, email_str):
+        return email_str.lower()
+    
+    # If still no valid email found, return empty string instead of invalid data
+    # This prevents invalid email addresses in the output
+    return ""
 
 
 def extract_email_addresses(header_value):
@@ -57,16 +156,56 @@ def extract_email_addresses(header_value):
         return []
     
     addresses = []
-    # Handle multiple addresses separated by comma
-    for addr in header_value.split(','):
-        email_addr = validate_and_fix_email(addr.strip())
+    
+    # First try to use parseaddr for each address
+    # Some headers might have semicolon-separated addresses
+    header_value = header_value.replace(';', ',')
+    
+    # Split by comma but be careful with commas inside quotes
+    # Use a simple approach: if we have quotes, handle them specially
+    if '"' in header_value:
+        # Complex parsing for quoted names
+        parts = []
+        current = []
+        in_quotes = False
+        for char in header_value:
+            if char == '"':
+                in_quotes = not in_quotes
+            if char == ',' and not in_quotes:
+                parts.append(''.join(current))
+                current = []
+            else:
+                current.append(char)
+        if current:
+            parts.append(''.join(current))
+    else:
+        # Simple split by comma
+        parts = header_value.split(',')
+    
+    # Process each part
+    for part in parts:
+        part = part.strip()
+        if not part:
+            continue
+            
+        # Try to extract name and email
+        name, email_addr = parseaddr(part)
+        
+        # If parseaddr didn't find an email, try our validator
+        if not email_addr:
+            email_addr = validate_and_fix_email(part)
+        else:
+            # Validate the email parseaddr found
+            email_addr = validate_and_fix_email(email_addr)
+        
         if email_addr:
             addresses.append({
                 "emailAddress": {
-                    "name": "",
+                    "name": name.strip() if name else "",
                     "address": email_addr
                 }
             })
+    
     return addresses
 
 
@@ -81,31 +220,107 @@ def extract_html_text(html_content):
     return text
 
 
-def extract_links_from_html(html_content):
-    """Extract all links from HTML content"""
+def extract_links_from_content(content):
+    """Extract all links from HTML or text content"""
     links = []
-    # Find all href attributes
+    seen_links = set()  # To avoid duplicates
+    
+    # Decode HTML entities first
+    content = html.unescape(content)
+    
+    # Pattern 1: Find all href attributes in HTML
     href_pattern = r'href\s*=\s*["\']([^"\']+)["\']'
-    matches = re.findall(href_pattern, html_content, re.IGNORECASE)
+    href_matches = re.findall(href_pattern, content, re.IGNORECASE)
     
-    for link in matches:
-        # Decode HTML entities in URLs
-        link = html.unescape(link)
-        if link and (link.startswith('http://') or link.startswith('https://')):
-            links.append(link)
+    # Pattern 2: Find URLs in plain text (more comprehensive)
+    # This pattern finds URLs with or without protocol
+    url_patterns = [
+        # Standard URLs with protocol
+        r'(https?://[^\s<>"{}|\\^\[\]`]+)',
+        # URLs with www but no protocol
+        r'(www\.[a-zA-Z0-9][a-zA-Z0-9.-]+\.[a-zA-Z]{2,}[^\s<>"{}|\\^\[\]`]*)',
+        # FTP URLs
+        r'(ftp://[^\s<>"{}|\\^\[\]`]+)',
+        # URLs in angle brackets or parentheses
+        r'[<\(](https?://[^>\)]+)[>\)]',
+        # Markdown style links
+        r'\[([^\]]+)\]\((https?://[^\)]+)\)',
+        # URLs with common domains even without www
+        r'([a-zA-Z0-9][a-zA-Z0-9.-]+\.(?:com|org|net|edu|gov|mil|int|co\.uk|ac\.uk|io|ai|app|dev|tech|online|store|shop|site|website|web|info|biz|name|pro|xyz|top|club|vip|ltd|group|email|fund|cash|gold|plus|world|today|life|live|love|care|one|mobi|asia|eu|us|uk|ca|de|fr|au|in|ru|ch|jp|cn|br|it|nl|se|no|es|mil)[/\s<>"\'.,;:!?\)]*)',
+        # Email style links that might be URLs
+        r'<(https?://[^>]+)>',
+    ]
     
-    return links
+    # Process href matches
+    for link in href_matches:
+        link = link.strip()
+        # Handle relative URLs by checking if they look like full URLs
+        if link.startswith(('http://', 'https://', 'ftp://', 'www.')):
+            if link.startswith('www.'):
+                link = 'http://' + link
+            if link not in seen_links:
+                links.append(link)
+                seen_links.add(link)
+    
+    # Find all URLs in content
+    for pattern in url_patterns:
+        matches = re.findall(pattern, content, re.IGNORECASE | re.MULTILINE)
+        for match in matches:
+            # Handle tuples from grouped patterns
+            if isinstance(match, tuple):
+                for m in match:
+                    if m and m.startswith(('http://', 'https://', 'ftp://')):
+                        if m not in seen_links:
+                            links.append(m)
+                            seen_links.add(m)
+            else:
+                url = match.strip()
+                # Add protocol if missing
+                if url.startswith('www.'):
+                    url = 'http://' + url
+                elif not url.startswith(('http://', 'https://', 'ftp://')) and re.match(r'^[a-zA-Z0-9][a-zA-Z0-9.-]+\.[a-zA-Z]{2,}', url):
+                    url = 'http://' + url
+                
+                # Validate and clean URL
+                if url.startswith(('http://', 'https://', 'ftp://')):
+                    # Remove trailing punctuation and HTML artifacts
+                    url = re.sub(r'[.,;:!?\'">\)<\]/]+$', '', url)
+                    # Remove common email endings that might be caught
+                    url = re.sub(r'[\s]*\[[^\]]+\]$', '', url)
+                    # Remove any trailing HTML tags
+                    url = re.sub(r'<[^>]*$', '', url)
+                    
+                    if url not in seen_links and len(url) > 10:  # Minimum URL length
+                        links.append(url)
+                        seen_links.add(url)
+    
+    return list(links)
 
 
 def extract_domains_from_links(links):
     """Extract unique domains from links"""
     domains = set()
+    
     for link in links:
-        # Extract domain from URL
-        domain_match = re.match(r'https?://([^/]+)', link)
-        if domain_match:
-            domain = domain_match.group(0)
-            domains.add(domain)
+        try:
+            # More comprehensive domain extraction
+            # Handle different URL schemes
+            if link.startswith(('http://', 'https://', 'ftp://')):
+                # Extract domain with protocol
+                domain_match = re.match(r'(https?://[^/\s?#]+)', link)
+                if domain_match:
+                    full_domain = domain_match.group(1)
+                    domains.add(full_domain)
+                    
+                    # Also add just the domain without protocol for variety
+                    domain_only_match = re.match(r'https?://([^/\s?#]+)', link)
+                    if domain_only_match:
+                        domain_only = domain_only_match.group(1)
+                        # Remove www. prefix for cleaner domain
+                        clean_domain = domain_only.replace('www.', '')
+                        domains.add(f"https://{clean_domain}")
+        except:
+            continue
     
     return list(domains)
 
@@ -132,10 +347,28 @@ def parse_eml_to_json(eml_path, tenant_id="2a9c5f75-c7ee-4b9f-9ccc-626ddcbd786a"
     # Extract and validate sender email
     sender_email = validate_and_fix_email(from_header)
     
+    # If sender email extraction failed, try alternative headers
+    if not sender_email:
+        # Try Sender header
+        sender_header = msg.get('Sender', '')
+        if sender_header:
+            sender_email = validate_and_fix_email(sender_header)
+        
+        # If still no sender, try Reply-To as fallback
+        if not sender_email and reply_to_header:
+            sender_email = validate_and_fix_email(reply_to_header)
+        
+        # If still no sender, generate a random unique email
+        if not sender_email:
+            sender_email = generate_random_email()
+    
     # Extract return path, use sender email if not available
     return_path = msg.get('Return-Path', '')
     if return_path:
         return_path = validate_and_fix_email(return_path)
+        # If return path validation failed, use sender
+        if not return_path:
+            return_path = sender_email
     else:
         return_path = sender_email
     
@@ -145,8 +378,18 @@ def parse_eml_to_json(eml_path, tenant_id="2a9c5f75-c7ee-4b9f-9ccc-626ddcbd786a"
     bcc_recipients = extract_email_addresses(bcc_header)
     reply_to_recipients = extract_email_addresses(reply_to_header)
     
-    # Use first TO recipient as mailbox_id, or sender if no TO recipients
-    mailbox_id = to_recipients[0]['emailAddress']['address'] if to_recipients else sender_email
+    # If no TO recipients found, generate a random one
+    if not to_recipients:
+        random_recipient = generate_random_email()
+        to_recipients = [{
+            "emailAddress": {
+                "name": "",
+                "address": random_recipient
+            }
+        }]
+    
+    # Use first TO recipient as mailbox_id
+    mailbox_id = to_recipients[0]['emailAddress']['address']
     
     # Extract dates
     date_header = msg.get('Date', '')
@@ -183,14 +426,17 @@ def parse_eml_to_json(eml_path, tenant_id="2a9c5f75-c7ee-4b9f-9ccc-626ddcbd786a"
         if msg.get_content_type() == 'text/html':
             content_type = "html"
     
-    # Extract links and domains if HTML content
+    # Extract links and domains from any content (HTML or text)
     links = []
     domains = []
     plain_text_content = body_content
     
+    # Always extract links, regardless of content type
+    links = extract_links_from_content(body_content)
+    domains = extract_domains_from_links(links)
+    
+    # Extract plain text if HTML
     if content_type == "html":
-        links = extract_links_from_html(body_content)
-        domains = extract_domains_from_links(links)
         plain_text_content = extract_html_text(body_content)
     
     # Extract attachments

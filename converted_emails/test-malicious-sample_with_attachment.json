@@ -47,12 +47,12 @@
       }
     },
     "headers": {
-      "spf": "pass",
-      "dkim": "fail",
+      "spf": "fail",
+      "dkim": "neutral",
       "dmarc": "fail",
       "returnpath": "sender@example.com",
       "ipaddress": [
-        "2603:1096:a01:af:cafe::"
+        "2603:1096:a04::"
       ],
       "smtpserver": "PN2P287MB0160.INDP287.PROD.OUTLOOK.COM",
       "tlsversion": "not available",
@@ -63,9 +63,11 @@
     "payload": {
       "content": "This email has an attachment. Please check the attached document. Visit our website for more info.",
       "links": [
-        "https://example.com"
+        "https://example.com",
+        "http://example.com"
       ],
       "domains": [
+        "http://example.com",
         "https://example.com"
       ]
     },
