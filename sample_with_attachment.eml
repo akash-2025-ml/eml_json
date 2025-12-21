@@ -1,0 +1,40 @@
+From: sender@example.com
+To: recipient@example.com
+Subject: Email with Attachment
+Date: Mon, 15 Jan 2024 10:30:00 +0000
+Message-ID: <sample123@example.com>
+Return-Path: sender@example.com
+MIME-Version: 1.0
+Content-Type: multipart/mixed; boundary="boundary123"
+
+--boundary123
+Content-Type: text/html; charset="UTF-8"
+
+<html>
+<body>
+<p>This email has an attachment. Please check the attached document.</p>
+<p>Visit our <a href="https://example.com">website</a> for more info.</p>
+</body>
+</html>
+
+--boundary123
+Content-Type: application/pdf; name="document.pdf"
+Content-Disposition: attachment; filename="document.pdf"
+Content-Transfer-Encoding: base64
+
+JVBERi0xLjQKJeLjz9MKMyAwIG9iago8PC9UeXBlL1BhZ2UvUGFyZW50IDIgMCBSL1Jlc291cmNl
+czw8L0ZvbnQ8PC9GMSA1IDAgUj4+Pj4+CmVuZG9iagoxIDAgb2JqCjw8L1R5cGUvQ2F0YWxvZy9Q
+YWdlcyAyIDAgUj4+CmVuZG9iago0IDAgb2JqCjw8L1R5cGUvRm9udC9TdWJ0eXBlL1R5cGUxL05h
+bWUvRjEvQmFzZUZvbnQvSGVsdmV0aWNhPj4KZW5kb2JqCjIgMCBvYmoKPDwvVHlwZS9QYWdlcy9D
+b3VudCAxL0tpZHNbMyAwIFJdPj4KZW5kb2JqCnhyZWYKMCA1CjAwMDAwMDAwMDAgNjU1MzUgZiAK
+MDAwMDAwMDEwMyAwMDAwMCBuIAowMDAwMDAwMjcwIDAwMDAwIG4gCjAwMDAwMDAwMTcgMDAwMDAg
+biAKMDAwMDAwMDE2MCAwMDAwMCBuIAp0cmFpbGVyCjw8L1NpemUgNS9Sb290IDEgMCBSPj4Kc3Rh
+cnR4cmVmCjMyNwolJUVPRgo=
+
+--boundary123
+Content-Type: text/plain; name="readme.txt"
+Content-Disposition: attachment; filename="readme.txt"
+
+This is a text attachment.
+
+--boundary123--

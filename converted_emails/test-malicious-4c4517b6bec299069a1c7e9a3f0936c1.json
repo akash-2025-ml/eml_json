@@ -1,0 +1,85 @@
+{
+  "tenant_id": "2a9c5f75-c7ee-4b9f-9ccc-626ddcbd786a",
+  "mailbox_id": "psellers@pacbell.net",
+  "message_id": "test-malicious-4c4517b6bec299069a1c7e9a3f0936c1",
+  "force_override": true,
+  "test_mode": true,
+  "email_data": {
+    "id": "test-malicious-4c4517b6bec299069a1c7e9a3f0936c1",
+    "emailcontent": {
+      "subject": "Don't want to expose your private life?",
+      "sender": {
+        "emailAddress": {
+          "name": "",
+          "address": "catrina.lucero@enron.com"
+        }
+      },
+      "from": {
+        "emailAddress": {
+          "name": "",
+          "address": "catrina.lucero@enron.com"
+        }
+      },
+      "toRecipients": [
+        {
+          "emailAddress": {
+            "name": "",
+            "address": "psellers@pacbell.net"
+          }
+        },
+        {
+          "emailAddress": {
+            "name": "",
+            "address": "cameron@perfect.com"
+          }
+        },
+        {
+          "emailAddress": {
+            "name": "",
+            "address": "nancy.sellers@robertmondavi.com"
+          }
+        }
+      ],
+      "ccRecipients": [],
+      "bccRecipients": [],
+      "replyTo": [],
+      "receivedDateTime": "2007-04-19T18:18:51+01:00",
+      "sentDateTime": "2007-04-19T18:18:51+01:00",
+      "body": {
+        "contentType": "html",
+        "content": "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0 Transitional//EN\">\n<HTML><HEAD>\n<META http-equiv=Content-Type content=\"text/html; charset=iso-8859-1\">\n<META content=\"MSHTML 6.00.2900.2995\" name=GENERATOR>\n<STYLE></STYLE>\n</HEAD>\n<BODY bgColor=#ffffff>\n<DIV><FONT face=Arial size=2><A href=\"http://wjeikd.cardpreyer.info/?76343673\"><IMG alt=\"\" hspace=0 \nsrc=\"cid:------------ms010409060500010009020306@Stephen\" align=baseline \nborder=0></A></FONT></DIV></BODY></HTML>\n"
+      },
+      "hasAttachments": false,
+      "internetMessageId": "<1c7394d6-8c96-4ddf-acc5-ef6bb3aa8c56@generated>",
+      "importance": "normal",
+      "isRead": false,
+      "isDraft": false,
+      "flag": {
+        "flagStatus": "notFlagged"
+      }
+    },
+    "headers": {
+      "spf": "none",
+      "dkim": "none",
+      "dmarc": "none",
+      "returnpath": "catrina.lucero@enron.com",
+      "ipaddress": [
+        "2603:1096:a01:af:cafe::"
+      ],
+      "smtpserver": "PN2P287MB0160.INDP287.PROD.OUTLOOK.COM",
+      "tlsversion": "not available",
+      "list_unsubscribe_urls": [],
+      "list_unsubscribe_mailtos": [],
+      "list_unsubscribe_one_click": false
+    },
+    "payload": {
+      "content": "",
+      "links": [
+        "http://wjeikd.cardpreyer.info/?76343673"
+      ],
+      "domains": [
+        "http://wjeikd.cardpreyer.info"
+      ]
+    }
+  }
+}
