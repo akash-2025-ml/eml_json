@@ -3,6 +3,7 @@ import email
 import json
 import os
 import re
+import base64
 from datetime import datetime
 from email import policy
 from email.utils import parseaddr, formataddr, parsedate_to_datetime
@@ -177,8 +178,60 @@ def parse_eml_to_json(eml_path, tenant_id="2a9c5f75-c7ee-4b9f-9ccc-626ddcbd786a"
         domains = extract_domains_from_links(links)
         plain_text_content = extract_html_text(body_content)
     
-    # Check for attachments
-    has_attachments = any(part.get_content_disposition() == 'attachment' for part in msg.walk())
+    # Extract attachments
+    has_attachments = False
+    attachments = []
+    
+    if msg.is_multipart():
+        for part in msg.walk():
+            # Check for attachments or inline images/files
+            content_disposition = part.get_content_disposition()
+            content_type = part.get_content_type()
+            
+            # Include attachments and inline images/files (not text/html or text/plain)
+            if (content_disposition == 'attachment' or 
+                (content_disposition == 'inline' and not content_type.startswith('text/')) or
+                (content_type.startswith('image/') and part.get_filename())):
+                has_attachments = True
+                
+                # Get attachment details
+                filename = part.get_filename()
+                if filename:
+                    # Get content type
+                    content_type = part.get_content_type()
+                    
+                    # Get attachment content as base64
+                    try:
+                        # Get transfer encoding
+                        transfer_encoding = part.get('Content-Transfer-Encoding', '').lower()
+                        
+                        if transfer_encoding == 'base64':
+                            # Content is already base64 encoded
+                            content = part.get_payload()
+                            # Remove any whitespace/newlines
+                            if isinstance(content, str):
+                                content = content.replace('\n', '').replace('\r', '').strip()
+                        else:
+                            # Decode and re-encode as base64
+                            raw_content = part.get_payload(decode=True)
+                            if raw_content:
+                                content = base64.b64encode(raw_content).decode('utf-8')
+                            else:
+                                content = ""
+                    except Exception as e:
+                        # Fallback: try to get content as is
+                        try:
+                            content = part.get_payload()
+                            if not isinstance(content, str):
+                                content = base64.b64encode(content).decode('utf-8')
+                        except:
+                            content = ""
+                    
+                    attachments.append({
+                        "name": filename,
+                        "contentBytes": content,
+                        "contentType": content_type
+                    })
     
     # Extract SPF, DKIM, DMARC from headers (if available)
     auth_results = msg.get('Authentication-Results', '')
@@ -268,6 +321,10 @@ def parse_eml_to_json(eml_path, tenant_id="2a9c5f75-c7ee-4b9f-9ccc-626ddcbd786a"
         }
     }
     
+    # Add attachments to the JSON if present
+    if attachments:
+        json_data["email_data"]["attachments"] = attachments
+    
     return json_data
 
 
@@ -299,6 +356,7 @@ def main():
     
     successful = 0
     failed = 0
+    files_with_attachments = []
     
     for eml_file in eml_files:
         try:
@@ -316,7 +374,13 @@ def main():
                 json.dump(json_data, f, indent=2, ensure_ascii=False)
             
             successful += 1
-            print(f"  ✓ Converted successfully: {json_filename}")
+            
+            # Check if file has attachments
+            if 'attachments' in json_data.get('email_data', {}):
+                files_with_attachments.append((eml_file, json_filename))
+                print(f"  ✓ Converted successfully: {json_filename} (Has {len(json_data['email_data']['attachments'])} attachment(s))")
+            else:
+                print(f"  ✓ Converted successfully: {json_filename}")
             
         except Exception as e:
             failed += 1
@@ -326,6 +390,14 @@ def main():
     print(f"Successful: {successful}")
     print(f"Failed: {failed}")
     print(f"Output files saved in: {output_dir}")
+    
+    # Print attachment summary
+    if files_with_attachments:
+        print(f"\nFiles with attachments: {len(files_with_attachments)}")
+        for eml_name, json_name in files_with_attachments:
+            print(f"  - {eml_name} → {json_name}")
+    else:
+        print("\nNo files with attachments found.")
 
 
 if __name__ == "__main__":
