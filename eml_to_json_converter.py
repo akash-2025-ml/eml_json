@@ -16,14 +16,12 @@ from pathlib import Path
 SPF_DKIM_VALUES = ["pass", "fail", "none", "neutral"]
 DMARC_VALUES = ["pass", "fail", "none"]
 IP_ADDRESSES = [
-    "2603:1096:c01:19c::",
-    "2603:1096:a01:af::",
-    "2603:1096:a01:af:cafe::",
-    "2a01:111:f403:c409::",
-    "2603:1096:a04::",
-    "2603:1096:c01:ec::",
-    "2603:1096:a01:1c7::",
-    "fe80::",
+    "91.250.83.70",
+    "192.99.16.53",
+    "65.254.247.224",
+    "105.19.49.175",
+    "208.109.62.199",
+    "91.250.83.70",
 ]
 
 
@@ -358,7 +356,7 @@ def extract_domains_from_links(links):
                 domain_match = re.match(r"https?://([^/\s?#]+)", link)
                 if not domain_match:
                     domain_match = re.match(r"ftp://([^/\s?#]+)", link)
-                
+
                 if domain_match:
                     domain = domain_match.group(1)
                     # Remove www. prefix for cleaner domain
@@ -441,60 +439,34 @@ def parse_eml_to_json(eml_path, tenant_id="2a9c5f75-c7ee-4b9f-9ccc-626ddcbd786a"
     except:
         date_str = datetime.now().isoformat()
 
-    # Extract body - collect ALL text content from all parts
+    # Extract body
     body_content = ""
-    html_content = ""
-    text_content = ""
     content_type = "text"
 
-    def get_part_content(part):
-        """Safely extract content from an email part"""
-        try:
-            content = part.get_content()
-            if isinstance(content, str):
-                return content
-            elif isinstance(content, bytes):
-                return content.decode("utf-8", errors="ignore")
-            return ""
-        except:
-            try:
-                payload = part.get_payload(decode=True)
-                if payload:
-                    # Try different encodings
-                    charset = part.get_content_charset() or "utf-8"
-                    try:
-                        return payload.decode(charset, errors="ignore")
-                    except:
-                        return payload.decode("utf-8", errors="ignore")
-                return ""
-            except:
-                return ""
-
     if msg.is_multipart():
-        # Collect ALL text/html and text/plain parts
         for part in msg.walk():
-            part_content_type = part.get_content_type()
-
-            if part_content_type == "text/html":
-                part_text = get_part_content(part)
-                if part_text:
-                    html_content += part_text + "\n"
-
-            elif part_content_type == "text/plain":
-                part_text = get_part_content(part)
-                if part_text:
-                    text_content += part_text + "\n"
-
-        # Prefer HTML content if available, otherwise use plain text
-        if html_content.strip():
-            body_content = html_content.strip()
-            content_type = "html"
-        elif text_content.strip():
-            body_content = text_content.strip()
-            content_type = "text"
+            if part.get_content_type() == "text/html":
+                try:
+                    body_content = part.get_content()
+                except:
+                    body_content = part.get_payload(decode=True).decode(
+                        "utf-8", errors="ignore"
+                    )
+                content_type = "html"
+                break
+            elif part.get_content_type() == "text/plain" and not body_content:
+                try:
+                    body_content = part.get_content()
+                except:
+                    body_content = part.get_payload(decode=True).decode(
+                        "utf-8", errors="ignore"
+                    )
+                content_type = "text"
     else:
-        # Non-multipart email
-        body_content = get_part_content(msg)
+        try:
+            body_content = msg.get_content()
+        except:
+            body_content = msg.get_payload(decode=True).decode("utf-8", errors="ignore")
         if msg.get_content_type() == "text/html":
             content_type = "html"
 
@@ -639,7 +611,7 @@ def parse_eml_to_json(eml_path, tenant_id="2a9c5f75-c7ee-4b9f-9ccc-626ddcbd786a"
 
     # Create unique message ID with test-malicious format
     filename_without_ext = os.path.splitext(os.path.basename(eml_path))[0]
-    unique_id = f"test-malicious-{filename_without_ext}"
+    unique_id = f"test-spam-{filename_without_ext}"
 
     # Build the JSON structure
     json_data = {
@@ -681,7 +653,9 @@ def parse_eml_to_json(eml_path, tenant_id="2a9c5f75-c7ee-4b9f-9ccc-626ddcbd786a"
                 "list_unsubscribe_one_click": False,
             },
             "payload": {
-                "content": plain_text_content if plain_text_content else "",
+                "content": (
+                    plain_text_content[:500] if plain_text_content else ""
+                ),  # First 500 chars
                 "links": links,
                 "domains": domains,
             },
@@ -773,4 +747,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-    
