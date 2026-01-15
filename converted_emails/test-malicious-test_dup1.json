@@ -1,44 +1,44 @@
 {
   "tenant_id": "2a9c5f75-c7ee-4b9f-9ccc-626ddcbd786a",
   "mailbox_id": "atharv@hackntrain.com",
-  "message_id": "test-malicious-test_no_emails",
+  "message_id": "test-malicious-test_dup1",
   "force_override": true,
   "test_mode": true,
   "email_data": {
-    "id": "test-malicious-test_no_emails",
+    "id": "test-malicious-test_dup1",
     "emailcontent": {
-      "subject": "Test Random Email Generation",
+      "subject": "Special Offer - 50% Discount",
       "sender": {
         "emailAddress": {
           "name": "",
-          "address": "qlewawg_slh1992@database.online"
+          "address": "sender@example.com"
         }
       },
       "from": {
         "emailAddress": {
           "name": "",
-          "address": "qlewawg_slh1992@database.online"
+          "address": "sender@example.com"
         }
       },
       "toRecipients": [
         {
           "emailAddress": {
             "name": "",
-            "address": "awxcxon1975@cyberzone.us"
+            "address": "user1@test.com"
           }
         }
       ],
       "ccRecipients": [],
       "bccRecipients": [],
       "replyTo": [],
-      "receivedDateTime": "2024-01-15T10:30:00+00:00",
-      "sentDateTime": "2024-01-15T10:30:00+00:00",
+      "receivedDateTime": "2024-01-15T10:00:00+00:00",
+      "sentDateTime": "2024-01-15T10:00:00+00:00",
       "body": {
         "contentType": "text",
-        "content": "Testing random email generation when no From/To headers are present.\nEOF < /dev/null\n"
+        "content": "Hi there,\n\nWe're offering a special 50% discount on all products this week!\n\nVisit our store: www.example.com/shop\nUse code: SAVE50\n\nBest regards,\nSales Team"
       },
       "hasAttachments": false,
-      "internetMessageId": "<testrandom@example.com>",
+      "internetMessageId": "<dup1@example.com>",
       "importance": "normal",
       "isRead": false,
       "isDraft": false,
@@ -47,12 +47,12 @@
       }
     },
     "headers": {
-      "spf": "pass",
-      "dkim": "pass",
-      "dmarc": "fail",
-      "returnpath": "qlewawg_slh1992@database.online",
+      "spf": "fail",
+      "dkim": "none",
+      "dmarc": "pass",
+      "returnpath": "sender@example.com",
       "ipaddress": [
-        "2603:1096:a04::"
+        "fe80::"
       ],
       "smtpserver": "PN2P287MB0160.INDP287.PROD.OUTLOOK.COM",
       "tlsversion": "not available",
@@ -61,9 +61,14 @@
       "list_unsubscribe_one_click": false
     },
     "payload": {
-      "content": "Testing random email generation when no From/To headers are present.\nEOF < /dev/null\n",
-      "links": [],
-      "domains": []
+      "content": "Hi there,\n\nWe're offering a special 50% discount on all products this week!\n\nVisit our store: www.example.com/shop\nUse code: SAVE50\n\nBest regards,\nSales Team",
+      "links": [
+        "http://www.example.com/shop",
+        "http://www.example.com"
+      ],
+      "domains": [
+        "example.com"
+      ]
     }
   }
 }

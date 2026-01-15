@@ -1,6 +1,6 @@
 {
   "tenant_id": "2a9c5f75-c7ee-4b9f-9ccc-626ddcbd786a",
-  "mailbox_id": "recipient@example.com",
+  "mailbox_id": "atharv@hackntrain.com",
   "message_id": "test-malicious-test_links",
   "force_override": true,
   "test_mode": true,
@@ -47,12 +47,12 @@
       }
     },
     "headers": {
-      "spf": "none",
-      "dkim": "pass",
-      "dmarc": "pass",
+      "spf": "neutral",
+      "dkim": "neutral",
+      "dmarc": "none",
       "returnpath": "tester@example.com",
       "ipaddress": [
-        "2a01:111:f403:c409::"
+        "2603:1096:a01:1c7::"
       ],
       "smtpserver": "PN2P287MB0160.INDP287.PROD.OUTLOOK.COM",
       "tlsversion": "not available",
@@ -70,32 +70,23 @@
         "http://help.example.com/guide",
         "http://www.shop.example.com",
         "ftp://files.example.com/downloads",
-        "http://example.com/",
-        "http://files.example.com/",
-        "http://example.org",
-        "http://blog.example.net/",
-        "http://cdn.example.io/",
         "http://example.com",
+        "http://files.example.com",
+        "http://example.org",
+        "http://blog.example.net",
+        "http://cdn.example.io",
         "http://support.example.com",
-        "http://help.example.com/"
+        "http://help.example.com"
       ],
       "domains": [
-        "https://files.example.com",
-        "https://blog.example.net",
-        "https://support.example.com",
-        "https://help.example.com",
-        "http://files.example.com",
-        "https://cdn.example.io",
-        "http://example.org",
-        "http://support.example.com",
-        "https://example.org",
-        "http://www.shop.example.com",
-        "https://example.com",
-        "http://cdn.example.io",
-        "http://example.com",
-        "http://help.example.com",
-        "https://shop.example.com",
-        "http://blog.example.net"
+        "cdn.example.io",
+        "files.example.com",
+        "example.com",
+        "example.org",
+        "help.example.com",
+        "support.example.com",
+        "blog.example.net",
+        "shop.example.com"
       ]
     }
   }

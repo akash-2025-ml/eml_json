@@ -1,6 +1,6 @@
 {
   "tenant_id": "2a9c5f75-c7ee-4b9f-9ccc-626ddcbd786a",
-  "mailbox_id": "jane@company.co.uk",
+  "mailbox_id": "atharv@hackntrain.com",
   "message_id": "test-malicious-test_problematic",
   "force_override": true,
   "test_mode": true,
@@ -73,12 +73,12 @@
       }
     },
     "headers": {
-      "spf": "fail",
-      "dkim": "none",
-      "dmarc": "none",
+      "spf": "none",
+      "dkim": "pass",
+      "dmarc": "pass",
       "returnpath": "noreply@example.com",
       "ipaddress": [
-        "2603:1096:c01:ec::"
+        "2603:1096:a01:af:cafe::"
       ],
       "smtpserver": "PN2P287MB0160.INDP287.PROD.OUTLOOK.COM",
       "tlsversion": "not available",

@@ -1,6 +1,6 @@
 {
   "tenant_id": "2a9c5f75-c7ee-4b9f-9ccc-626ddcbd786a",
-  "mailbox_id": "recipient@example.com",
+  "mailbox_id": "atharv@hackntrain.com",
   "message_id": "test-malicious-sample_with_attachment",
   "force_override": true,
   "test_mode": true,
@@ -35,7 +35,7 @@
       "sentDateTime": "2024-01-15T10:30:00+00:00",
       "body": {
         "contentType": "text/plain",
-        "content": "<html>\n<body>\n<p>This email has an attachment. Please check the attached document.</p>\n<p>Visit our <a href=\"https://example.com\">website</a> for more info.</p>\n</body>\n</html>\n"
+        "content": "<html>\n<body>\n<p>This email has an attachment. Please check the attached document.</p>\n<p>Visit our <a href=\"https://example.com\">website</a> for more info.</p>\n</body>\n</html>"
       },
       "hasAttachments": true,
       "internetMessageId": "<sample123@example.com>",
@@ -47,9 +47,9 @@
       }
     },
     "headers": {
-      "spf": "fail",
-      "dkim": "neutral",
-      "dmarc": "fail",
+      "spf": "neutral",
+      "dkim": "fail",
+      "dmarc": "none",
       "returnpath": "sender@example.com",
       "ipaddress": [
         "2603:1096:a04::"
@@ -67,8 +67,7 @@
         "http://example.com"
       ],
       "domains": [
-        "http://example.com",
-        "https://example.com"
+        "example.com"
       ]
     },
     "attachments": [

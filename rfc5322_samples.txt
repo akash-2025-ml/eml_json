@@ -1,0 +1,270 @@
+===============================================================================
+SAMPLE 1: Basic Plain Text Email
+===============================================================================
+From: alice@example.com
+To: bob@example.org
+Subject: Simple Plain Text Message
+Date: Mon, 15 Jan 2024 09:00:00 +0000
+Message-ID: <sample1.20240115090000@example.com>
+
+This is a simple plain text email following RFC 5322 standards.
+
+Best regards,
+Alice
+
+===============================================================================
+SAMPLE 2: Email with Multiple Recipients and Headers
+===============================================================================
+From: "Sarah Johnson" <sarah.johnson@company.com>
+To: "Development Team" <dev-team@company.com>, john.doe@client.org
+Cc: manager@company.com, "HR Department" <hr@company.com>
+Reply-To: "Sarah Johnson" <sarah.replies@company.com>
+Subject: Project Update: Q1 Milestones Achieved
+Date: Tue, 20 Feb 2024 14:30:00 -0500
+Message-ID: <update.20240220143000.98765@company.com>
+Return-Path: <sarah.johnson@company.com>
+X-Priority: 2
+X-Mailer: CorporateMailer v2.1
+Organization: Example Company Inc.
+
+Dear Team,
+
+I'm pleased to announce that we've successfully completed all Q1 milestones.
+
+Key achievements:
+- Feature X implemented and tested
+- Performance improvements deployed
+- Documentation updated
+
+Congratulations to everyone involved!
+
+Sarah Johnson
+Project Manager
+Example Company Inc.
+
+===============================================================================
+SAMPLE 3: Email Thread with References
+===============================================================================
+From: developer@techcorp.io
+To: support@software.net
+Subject: Re: Bug Report #12345 - Database Connection Issue
+Date: Wed, 06 Mar 2024 10:15:30 +0100
+Message-ID: <bug12345.reply2.20240306101530@techcorp.io>
+In-Reply-To: <bug12345.reply1.20240305161000@software.net>
+References: <bug12345.original.20240305093000@software.net>
+            <bug12345.reply1.20240305161000@software.net>
+Thread-Topic: Bug Report #12345 - Database Connection Issue
+Thread-Index: AQHZcdefghijk123456789==
+
+The issue has been resolved. The problem was related to connection pooling.
+
+Fix applied:
+- Updated connection timeout to 30 seconds
+- Increased max pool size to 100
+- Added retry logic for transient failures
+
+You can close this ticket.
+
+Thanks,
+Dev Team
+
+===============================================================================
+SAMPLE 4: Multipart Email with HTML and Plain Text
+===============================================================================
+From: newsletter@news-site.com
+To: subscriber@email.com
+Subject: Weekly Newsletter - Top Stories
+Date: Fri, 15 Mar 2024 08:00:00 +0000
+Message-ID: <newsletter.20240315080000.54321@news-site.com>
+MIME-Version: 1.0
+Content-Type: multipart/alternative; boundary="----=_NextPart_001_0C54_01DA7654.3F2E5A60"
+Precedence: bulk
+List-Unsubscribe: <https://news-site.com/unsubscribe?id=12345>
+Return-Path: <bounce-newsletter@news-site.com>
+
+------=_NextPart_001_0C54_01DA7654.3F2E5A60
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
+
+WEEKLY NEWSLETTER - March 15, 2024
+
+Top Stories This Week:
+
+1. Technology Breakthrough Announced
+   Scientists reveal new quantum computing milestone
+
+2. Market Update
+   Stock markets reach new highs
+
+3. Sports News
+   Championship finals this weekend
+
+Read more at https://news-site.com
+
+To unsubscribe: https://news-site.com/unsubscribe?id=12345
+
+------=_NextPart_001_0C54_01DA7654.3F2E5A60
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Weekly Newsletter</title>
+</head>
+<body style="font-family: Arial, sans-serif;">
+    <h1>Weekly Newsletter - March 15, 2024</h1>
+    
+    <h2>Top Stories This Week:</h2>
+    
+    <h3>1. Technology Breakthrough Announced</h3>
+    <p>Scientists reveal new quantum computing milestone</p>
+    
+    <h3>2. Market Update</h3>
+    <p>Stock markets reach new highs</p>
+    
+    <h3>3. Sports News</h3>
+    <p>Championship finals this weekend</p>
+    
+    <p><a href="https://news-site.com">Read more on our website</a></p>
+    
+    <hr>
+    <p style="font-size: 12px; color: #666;">
+        To unsubscribe: <a href="https://news-site.com/unsubscribe?id=12345">click here</a>
+    </p>
+</body>
+</html>
+
+------=_NextPart_001_0C54_01DA7654.3F2E5A60--
+
+===============================================================================
+SAMPLE 5: Complex Email with Attachments and Multiple Parts
+===============================================================================
+From: "Project Coordinator" <coordinator@enterprise.com>
+To: "Client Team" <team@client-company.com>
+Cc: legal@enterprise.com, finance@enterprise.com
+Bcc: archive@enterprise.com
+Subject: Contract Documents and Meeting Minutes - Project Alpha
+Date: Mon, 25 Mar 2024 16:45:00 +0000
+Message-ID: <contract.20240325164500.11111@enterprise.com>
+Importance: High
+X-MSMail-Priority: High
+Reply-To: contracts@enterprise.com
+Return-Path: <coordinator@enterprise.com>
+Received: from smtp.enterprise.com (smtp.enterprise.com [203.0.113.45])
+        by mx.client-company.com (Postfix) with ESMTPS id 4N5M2K1234567
+        for <team@client-company.com>; Mon, 25 Mar 2024 16:45:15 +0000 (UTC)
+Received: from internal.enterprise.com (internal.enterprise.com [10.0.0.100])
+        by smtp.enterprise.com (Postfix) with ESMTP id 3P4K1J0987654
+        for <team@client-company.com>; Mon, 25 Mar 2024 16:45:10 +0000 (UTC)
+MIME-Version: 1.0
+Content-Type: multipart/mixed; boundary="----=_Part_156_1234567890.1234567890123"
+X-Spam-Score: -2.5
+Authentication-Results: mx.client-company.com;
+    spf=pass (sender IP is 203.0.113.45) smtp.mailfrom=enterprise.com;
+    dkim=pass (signature was verified) header.d=enterprise.com;
+    dmarc=pass action=none header.from=enterprise.com
+
+------=_Part_156_1234567890.1234567890123
+Content-Type: multipart/related; boundary="----=_Part_157_0987654321.0987654321098"
+
+------=_Part_157_0987654321.0987654321098
+Content-Type: multipart/alternative; boundary="----=_Part_158_1111111111.2222222222222"
+
+------=_Part_158_1111111111.2222222222222
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+Dear Client Team,
+
+Please find attached the following documents for Project Alpha:
+
+1. Final contract document (PDF)
+2. Meeting minutes from March 22, 2024 (DOCX)
+3. Budget breakdown (XLSX)
+4. Project timeline chart (PNG)
+
+Important points to note:
+- Contract requires signature by March 30, 2024
+- Budget has been approved by finance department
+- Timeline shows delivery by Q3 2024
+
+Please review and let us know if you have any questions.
+
+Best regards,
+Project Coordination Team
+Enterprise Solutions Inc.
+
+------=_Part_158_1111111111.2222222222222
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<!DOCTYPE html>
+<html>
+<head><meta charset=3D"UTF-8"></head>
+<body>
+    <p>Dear Client Team,</p>
+    <p>Please find attached the following documents for Project Alpha:</p>
+    <ol>
+        <li>Final contract document (PDF)</li>
+        <li>Meeting minutes from March 22, 2024 (DOCX)</li>
+        <li>Budget breakdown (XLSX)</li>
+        <li>Project timeline chart (PNG)</li>
+    </ol>
+    <p><strong>Important points to note:</strong></p>
+    <ul>
+        <li>Contract requires signature by March 30, 2024</li>
+        <li>Budget has been approved by finance department</li>
+        <li>Timeline shows delivery by Q3 2024</li>
+    </ul>
+    <p>Please review and let us know if you have any questions.</p>
+    <p>Best regards,<br>
+    Project Coordination Team<br>
+    Enterprise Solutions Inc.</p>
+</body>
+</html>
+
+------=_Part_158_1111111111.2222222222222--
+
+------=_Part_157_0987654321.0987654321098
+Content-Type: image/png; name="timeline_chart.png"
+Content-Transfer-Encoding: base64
+Content-ID: <image001@enterprise.com>
+Content-Disposition: inline; filename="timeline_chart.png"
+
+iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mP8/5+hHgAHggJ/
+PchI7wAAAABJRU5ErkJggg==
+
+------=_Part_157_0987654321.0987654321098--
+
+------=_Part_156_1234567890.1234567890123
+Content-Type: application/pdf; name="contract_project_alpha.pdf"
+Content-Disposition: attachment; filename="contract_project_alpha.pdf"
+Content-Transfer-Encoding: base64
+
+JVBERi0xLjQKJcfsj6IKMSAwIG9iago8PC9UeXBlL0NhdGFsb2cvUGFnZXMgMiAwIFI+PgplbmRv
+YmoKMiAwIG9iago8PC9UeXBlL1BhZ2VzL0tpZHNbMyAwIFJdL0NvdW50IDE+PgplbmRvYmoKMyAw
+IG9iago8PC9UeXBlL1BhZ2UvTWVkaWFCb3hbMCAwIDYxMiA3OTJdL1BhcmVudCAyIDAgUj4+CmVu
+ZG9iagp4cmVmCjAgNAowMDAwMDAwMDAwIDY1NTM1IGYgCjAwMDAwMDAwMTUgMDAwMDAgbiAKMDAw
+MDAwMDA3NCAwMDAwMCBuIAowMDAwMDAwMTMxIDAwMDAwIG4gCnRyYWlsZXIKPDwvU2l6ZSA0L1Jv
+b3QgMSAwIFI+PgpzdGFydHhyZWYKMjE3CiUlRU9GCg==
+
+------=_Part_156_1234567890.1234567890123
+Content-Type: application/vnd.openxmlformats-officedocument.wordprocessingml.document; 
+    name="meeting_minutes_20240322.docx"
+Content-Disposition: attachment; filename="meeting_minutes_20240322.docx"
+Content-Transfer-Encoding: base64
+
+UEsDBBQABgAIAAAAIQDfpNJsWgEAACAFAAATAAgCW0NvbnRlbnRfVHlwZXNdLnhtbCCiBAIooAAC
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+
+------=_Part_156_1234567890.1234567890123
+Content-Type: application/vnd.ms-excel; name="budget_breakdown.xlsx"
+Content-Disposition: attachment; filename="budget_breakdown.xlsx"
+Content-Transfer-Encoding: base64
+
+UEsDBBQABgAIAAAAIQBi7p1oXgEAAJAEAAATAAgCW0NvbnRlbnRfVHlwZXNdLnhtbCCiBAIooAAC
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+
+------=_Part_156_1234567890.1234567890123--

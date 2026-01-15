@@ -1,6 +1,6 @@
 {
   "tenant_id": "2a9c5f75-c7ee-4b9f-9ccc-626ddcbd786a",
-  "mailbox_id": "psellers@pacbell.net",
+  "mailbox_id": "atharv@hackntrain.com",
   "message_id": "test-malicious-4c4517b6bec299069a1c7e9a3f0936c1",
   "force_override": true,
   "test_mode": true,
@@ -47,10 +47,10 @@
       "sentDateTime": "2007-04-19T18:18:51+01:00",
       "body": {
         "contentType": "image/gif",
-        "content": "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0 Transitional//EN\">\n<HTML><HEAD>\n<META http-equiv=Content-Type content=\"text/html; charset=iso-8859-1\">\n<META content=\"MSHTML 6.00.2900.2995\" name=GENERATOR>\n<STYLE></STYLE>\n</HEAD>\n<BODY bgColor=#ffffff>\n<DIV><FONT face=Arial size=2><A href=\"http://wjeikd.cardpreyer.info/?76343673\"><IMG alt=\"\" hspace=0 \nsrc=\"cid:------------ms010409060500010009020306@Stephen\" align=baseline \nborder=0></A></FONT></DIV></BODY></HTML>\n"
+        "content": "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0 Transitional//EN\">\n<HTML><HEAD>\n<META http-equiv=Content-Type content=\"text/html; charset=iso-8859-1\">\n<META content=\"MSHTML 6.00.2900.2995\" name=GENERATOR>\n<STYLE></STYLE>\n</HEAD>\n<BODY bgColor=#ffffff>\n<DIV><FONT face=Arial size=2><A href=\"http://wjeikd.cardpreyer.info/?76343673\"><IMG alt=\"\" hspace=0 \nsrc=\"cid:------------ms010409060500010009020306@Stephen\" align=baseline \nborder=0></A></FONT></DIV></BODY></HTML>"
       },
       "hasAttachments": true,
-      "internetMessageId": "<8b71c4a4-6ffd-4d4a-a024-a853e8765d47@generated>",
+      "internetMessageId": "<08703157-98d4-4768-9c50-59b1140f43ea@generated>",
       "importance": "normal",
       "isRead": false,
       "isDraft": false,
@@ -60,11 +60,11 @@
     },
     "headers": {
       "spf": "none",
-      "dkim": "neutral",
-      "dmarc": "none",
+      "dkim": "none",
+      "dmarc": "fail",
       "returnpath": "catrina.lucero@enron.com",
       "ipaddress": [
-        "2a01:111:f403:c409::"
+        "2603:1096:c01:19c::"
       ],
       "smtpserver": "PN2P287MB0160.INDP287.PROD.OUTLOOK.COM",
       "tlsversion": "not available",
@@ -76,11 +76,10 @@
       "content": "",
       "links": [
         "http://wjeikd.cardpreyer.info/?76343673",
-        "http://wjeikd.cardpreyer.info/"
+        "http://wjeikd.cardpreyer.info"
       ],
       "domains": [
-        "https://wjeikd.cardpreyer.info",
-        "http://wjeikd.cardpreyer.info"
+        "wjeikd.cardpreyer.info"
       ]
     },
     "attachments": [
