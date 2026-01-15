@@ -1,0 +1,86 @@
+{
+  "tenant_id": "2a9c5f75-c7ee-4b9f-9ccc-626ddcbd786a",
+  "mailbox_id": "atharv@hackntrain.com",
+  "message_id": "test-spam-sample_with_attachment",
+  "force_override": true,
+  "test_mode": true,
+  "email_data": {
+    "id": "test-spam-sample_with_attachment",
+    "emailcontent": {
+      "subject": "Email with Attachment",
+      "sender": {
+        "emailAddress": {
+          "name": "",
+          "address": "sender@example.com"
+        }
+      },
+      "from": {
+        "emailAddress": {
+          "name": "",
+          "address": "sender@example.com"
+        }
+      },
+      "toRecipients": [
+        {
+          "emailAddress": {
+            "name": "",
+            "address": "recipient@example.com"
+          }
+        }
+      ],
+      "ccRecipients": [],
+      "bccRecipients": [],
+      "replyTo": [],
+      "receivedDateTime": "2024-01-15T10:30:00+00:00",
+      "sentDateTime": "2024-01-15T10:30:00+00:00",
+      "body": {
+        "contentType": "text/plain",
+        "content": "<html>\n<body>\n<p>This email has an attachment. Please check the attached document.</p>\n<p>Visit our <a href=\"https://example.com\">website</a> for more info.</p>\n</body>\n</html>"
+      },
+      "hasAttachments": true,
+      "internetMessageId": "<sample123@example.com>",
+      "importance": "normal",
+      "isRead": false,
+      "isDraft": false,
+      "flag": {
+        "flagStatus": "notFlagged"
+      }
+    },
+    "headers": {
+      "spf": "pass",
+      "dkim": "fail",
+      "dmarc": "fail",
+      "returnpath": "sender@example.com",
+      "ipaddress": [
+        "91.250.83.70"
+      ],
+      "smtpserver": "PN2P287MB0160.INDP287.PROD.OUTLOOK.COM",
+      "tlsversion": "not available",
+      "list_unsubscribe_urls": [],
+      "list_unsubscribe_mailtos": [],
+      "list_unsubscribe_one_click": false
+    },
+    "payload": {
+      "content": "This email has an attachment. Please check the attached document. Visit our website for more info.",
+      "links": [
+        "https://example.com",
+        "http://example.com"
+      ],
+      "domains": [
+        "example.com"
+      ]
+    },
+    "attachments": [
+      {
+        "name": "document.pdf",
+        "contentBytes": "JVBERi0xLjQKJeLjz9MKMyAwIG9iago8PC9UeXBlL1BhZ2UvUGFyZW50IDIgMCBSL1Jlc291cmNlczw8L0ZvbnQ8PC9GMSA1IDAgUj4+Pj4+CmVuZG9iagoxIDAgb2JqCjw8L1R5cGUvQ2F0YWxvZy9QYWdlcyAyIDAgUj4+CmVuZG9iago0IDAgb2JqCjw8L1R5cGUvRm9udC9TdWJ0eXBlL1R5cGUxL05hbWUvRjEvQmFzZUZvbnQvSGVsdmV0aWNhPj4KZW5kb2JqCjIgMCBvYmoKPDwvVHlwZS9QYWdlcy9Db3VudCAxL0tpZHNbMyAwIFJdPj4KZW5kb2JqCnhyZWYKMCA1CjAwMDAwMDAwMDAgNjU1MzUgZiAKMDAwMDAwMDEwMyAwMDAwMCBuIAowMDAwMDAwMjcwIDAwMDAwIG4gCjAwMDAwMDAwMTcgMDAwMDAgbiAKMDAwMDAwMDE2MCAwMDAwMCBuIAp0cmFpbGVyCjw8L1NpemUgNS9Sb290IDEgMCBSPj4Kc3RhcnR4cmVmCjMyNwolJUVPRgo=",
+        "contentType": "application/pdf"
+      },
+      {
+        "name": "readme.txt",
+        "contentBytes": "VGhpcyBpcyBhIHRleHQgYXR0YWNobWVudC4K",
+        "contentType": "text/plain"
+      }
+    ]
+  }
+}

@@ -1,0 +1,73 @@
+{
+  "tenant_id": "2a9c5f75-c7ee-4b9f-9ccc-626ddcbd786a",
+  "mailbox_id": "atharv@hackntrain.com",
+  "message_id": "test-spam-00001",
+  "force_override": true,
+  "test_mode": true,
+  "email_data": {
+    "id": "test-spam-00001",
+    "emailcontent": {
+      "subject": "[ILUG] STOP THE MLM INSANITY",
+      "sender": {
+        "emailAddress": {
+          "name": "",
+          "address": "startnow2002@hotmail.com"
+        }
+      },
+      "from": {
+        "emailAddress": {
+          "name": "",
+          "address": "startnow2002@hotmail.com"
+        }
+      },
+      "toRecipients": [
+        {
+          "emailAddress": {
+            "name": "",
+            "address": "ilug@linux.ie"
+          }
+        }
+      ],
+      "ccRecipients": [],
+      "bccRecipients": [],
+      "replyTo": [],
+      "receivedDateTime": "2002-08-02T23:37:59+05:30",
+      "sentDateTime": "2002-08-02T23:37:59+05:30",
+      "body": {
+        "contentType": "text",
+        "content": "Greetings!\n\nYou are receiving this letter because you have expressed an interest in \nreceiving information about online business opportunities. If this is \nerroneous then please accept my most sincere apology. This is a one-time \nmailing, so no removal is necessary.\n\nIf you've been burned, betrayed, and back-stabbed by multi-level marketing, \nMLM, then please read this letter. It could be the most important one that \nhas ever landed in your Inbox.\n\nMULTI-LEVEL MARKETING IS A HUGE MISTAKE FOR MOST PEOPLE\n\nMLM has failed to deliver on its promises for the past 50 years. The pursuit \nof the \"MLM Dream\" has cost hundreds of thousands of people their friends, \ntheir fortunes and their sacred honor. The fact is that MLM is fatally \nflawed, meaning that it CANNOT work for most people.\n\nThe companies and the few who earn the big money in MLM are NOT going to \ntell you the real story. FINALLY, there is someone who has the courage to \ncut through the hype and lies and tell the TRUTH about MLM.\n\nHERE'S GOOD NEWS\n\nThere IS an alternative to MLM that WORKS, and works BIG! If you haven't yet \nabandoned your dreams, then you need to see this. Earning the kind of income \nyou've dreamed about is easier than you think!\n\nWith your permission, I'd like to send you a brief letter that will tell you \nWHY MLM doesn't work for most people and will then introduce you to \nsomething so new and refreshing that you'll wonder why you haven't heard of \nthis before.\n\nI promise that there will be NO unwanted follow up, NO sales pitch, no one \nwill call you, and your email address will only be used to send you the \ninformation. Period.\n\nTo receive this free, life-changing information, simply click Reply, type \n\"Send Info\" in the Subject box and hit Send. I'll get the information to you \nwithin 24 hours. Just look for the words MLM WALL OF SHAME in your Inbox.\n\nCordially,\n\nSiddhi\n\nP.S. Someone recently sent the letter to me and it has been the most \neye-opening, financially beneficial information I have ever received. I \nhonestly believe that you will feel the same way once you've read it. And \nit's FREE!\n\n\n------------------------------------------------------------\nThis email is NEVER sent unsolicited.  THIS IS NOT \"SPAM\". You are receiving \nthis email because you EXPLICITLY signed yourself up to our list with our \nonline signup form or through use of our FFA Links Page and E-MailDOM \nsystems, which have EXPLICIT terms of use which state that through its use \nyou agree to receive our emailings.  You may also be a member of a Altra \nComputer Systems list or one of many numerous FREE Marketing Services and as \nsuch you agreed when you signed up for such list that you would also be \nreceiving this emailing.\nDue to the above, this email message cannot be considered unsolicitated, or \nspam.\n-----------------------------------------------------------\n\n\n\n\n-- \nIrish Linux Users' Group: ilug@linux.ie\nhttp://www.linux.ie/mailman/listinfo/ilug for (un)subscription information.\nList maintainer: listmaster@linux.ie\n\n\n"
+      },
+      "hasAttachments": false,
+      "internetMessageId": "<1028311679.886@0.57.142>",
+      "importance": "normal",
+      "isRead": false,
+      "isDraft": false,
+      "flag": {
+        "flagStatus": "notFlagged"
+      }
+    },
+    "headers": {
+      "spf": "neutral",
+      "dkim": "none",
+      "dmarc": "none",
+      "returnpath": "ilug-admin@linux.ie",
+      "ipaddress": [
+        "127.0.0.1"
+      ],
+      "smtpserver": "PN2P287MB0160.INDP287.PROD.OUTLOOK.COM",
+      "tlsversion": "not available",
+      "list_unsubscribe_urls": [],
+      "list_unsubscribe_mailtos": [],
+      "list_unsubscribe_one_click": false
+    },
+    "payload": {
+      "content": "Greetings!\n\nYou are receiving this letter because you have expressed an interest in \nreceiving information about online business opportunities. If this is \nerroneous then please accept my most sincere apology. This is a one-time \nmailing, so no removal is necessary.\n\nIf you've been burned, betrayed, and back-stabbed by multi-level marketing, \nMLM, then please read this letter. It could be the most important one that \nhas ever landed in your Inbox.\n\nMULTI-LEVEL MARKETING IS A HUGE MISTAKE FOR MOST PEOPLE\n\nMLM has failed to deliver on its promises for the past 50 years. The pursuit \nof the \"MLM Dream\" has cost hundreds of thousands of people their friends, \ntheir fortunes and their sacred honor. The fact is that MLM is fatally \nflawed, meaning that it CANNOT work for most people.\n\nThe companies and the few who earn the big money in MLM are NOT going to \ntell you the real story. FINALLY, there is someone who has the courage to \ncut through the hype and lies and tell the TRUTH about MLM.\n\nHERE'S GOOD NEWS\n\nThere IS an alternative to MLM that WORKS, and works BIG! If you haven't yet \nabandoned your dreams, then you need to see this. Earning the kind of income \nyou've dreamed about is easier than you think!\n\nWith your permission, I'd like to send you a brief letter that will tell you \nWHY MLM doesn't work for most people and will then introduce you to \nsomething so new and refreshing that you'll wonder why you haven't heard of \nthis before.\n\nI promise that there will be NO unwanted follow up, NO sales pitch, no one \nwill call you, and your email address will only be used to send you the \ninformation. Period.\n\nTo receive this free, life-changing information, simply click Reply, type \n\"Send Info\" in the Subject box and hit Send. I'll get the information to you \nwithin 24 hours. Just look for the words MLM WALL OF SHAME in your Inbox.\n\nCordially,\n\nSiddhi\n\nP.S. Someone recently sent the letter to me and it has been the most \neye-opening, financially beneficial information I have ever received. I \nhonestly believe that you will feel the same way once you've read it. And \nit's FREE!\n\n\n------------------------------------------------------------\nThis email is NEVER sent unsolicited.  THIS IS NOT \"SPAM\". You are receiving \nthis email because you EXPLICITLY signed yourself up to our list with our \nonline signup form or through use of our FFA Links Page and E-MailDOM \nsystems, which have EXPLICIT terms of use which state that through its use \nyou agree to receive our emailings.  You may also be a member of a Altra \nComputer Systems list or one of many numerous FREE Marketing Services and as \nsuch you agreed when you signed up for such list that you would also be \nreceiving this emailing.\nDue to the above, this email message cannot be considered unsolicitated, or \nspam.\n-----------------------------------------------------------\n\n\n\n\n-- \nIrish Linux Users' Group: ilug@linux.ie\nhttp://www.linux.ie/mailman/listinfo/ilug for (un)subscription information.\nList maintainer: listmaster@linux.ie\n\n\n",
+      "links": [
+        "http://www.linux.ie/mailman/listinfo/ilug"
+      ],
+      "domains": [
+        "linux.ie"
+      ]
+    }
+  }
+}

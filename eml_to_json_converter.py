@@ -439,34 +439,60 @@ def parse_eml_to_json(eml_path, tenant_id="2a9c5f75-c7ee-4b9f-9ccc-626ddcbd786a"
     except:
         date_str = datetime.now().isoformat()
 
-    # Extract body
+    # Extract body - collect ALL text content from all parts
     body_content = ""
+    html_content = ""
+    text_content = ""
     content_type = "text"
 
-    if msg.is_multipart():
-        for part in msg.walk():
-            if part.get_content_type() == "text/html":
-                try:
-                    body_content = part.get_content()
-                except:
-                    body_content = part.get_payload(decode=True).decode(
-                        "utf-8", errors="ignore"
-                    )
-                content_type = "html"
-                break
-            elif part.get_content_type() == "text/plain" and not body_content:
-                try:
-                    body_content = part.get_content()
-                except:
-                    body_content = part.get_payload(decode=True).decode(
-                        "utf-8", errors="ignore"
-                    )
-                content_type = "text"
-    else:
+    def get_part_content(part):
+        """Safely extract content from an email part"""
         try:
-            body_content = msg.get_content()
+            content = part.get_content()
+            if isinstance(content, str):
+                return content
+            elif isinstance(content, bytes):
+                return content.decode("utf-8", errors="ignore")
+            return ""
         except:
-            body_content = msg.get_payload(decode=True).decode("utf-8", errors="ignore")
+            try:
+                payload = part.get_payload(decode=True)
+                if payload:
+                    # Try different encodings
+                    charset = part.get_content_charset() or "utf-8"
+                    try:
+                        return payload.decode(charset, errors="ignore")
+                    except:
+                        return payload.decode("utf-8", errors="ignore")
+                return ""
+            except:
+                return ""
+
+    if msg.is_multipart():
+        # Collect ALL text/html and text/plain parts
+        for part in msg.walk():
+            part_content_type = part.get_content_type()
+
+            if part_content_type == "text/html":
+                part_text = get_part_content(part)
+                if part_text:
+                    html_content += part_text + "\n"
+
+            elif part_content_type == "text/plain":
+                part_text = get_part_content(part)
+                if part_text:
+                    text_content += part_text + "\n"
+
+        # Prefer HTML content if available, otherwise use plain text
+        if html_content.strip():
+            body_content = html_content.strip()
+            content_type = "html"
+        elif text_content.strip():
+            body_content = text_content.strip()
+            content_type = "text"
+    else:
+        # Non-multipart email
+        body_content = get_part_content(msg)
         if msg.get_content_type() == "text/html":
             content_type = "html"
 
@@ -653,9 +679,7 @@ def parse_eml_to_json(eml_path, tenant_id="2a9c5f75-c7ee-4b9f-9ccc-626ddcbd786a"
                 "list_unsubscribe_one_click": False,
             },
             "payload": {
-                "content": (
-                    plain_text_content[:500] if plain_text_content else ""
-                ),  # First 500 chars
+                "content": plain_text_content if plain_text_content else "",
                 "links": links,
                 "domains": domains,
             },

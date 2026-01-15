@@ -1,0 +1,69 @@
+{
+  "tenant_id": "2a9c5f75-c7ee-4b9f-9ccc-626ddcbd786a",
+  "mailbox_id": "atharv@hackntrain.com",
+  "message_id": "test-spam-test_no_emails",
+  "force_override": true,
+  "test_mode": true,
+  "email_data": {
+    "id": "test-spam-test_no_emails",
+    "emailcontent": {
+      "subject": "Test Random Email Generation",
+      "sender": {
+        "emailAddress": {
+          "name": "",
+          "address": "zbttado21_339@jhair.io"
+        }
+      },
+      "from": {
+        "emailAddress": {
+          "name": "",
+          "address": "zbttado21_339@jhair.io"
+        }
+      },
+      "toRecipients": [
+        {
+          "emailAddress": {
+            "name": "",
+            "address": "smytoh_389@uisny.uk"
+          }
+        }
+      ],
+      "ccRecipients": [],
+      "bccRecipients": [],
+      "replyTo": [],
+      "receivedDateTime": "2024-01-15T10:30:00+00:00",
+      "sentDateTime": "2024-01-15T10:30:00+00:00",
+      "body": {
+        "contentType": "text",
+        "content": "Testing random email generation when no From/To headers are present.\nEOF < /dev/null\n"
+      },
+      "hasAttachments": false,
+      "internetMessageId": "<testrandom@example.com>",
+      "importance": "normal",
+      "isRead": false,
+      "isDraft": false,
+      "flag": {
+        "flagStatus": "notFlagged"
+      }
+    },
+    "headers": {
+      "spf": "neutral",
+      "dkim": "neutral",
+      "dmarc": "fail",
+      "returnpath": "zbttado21_339@jhair.io",
+      "ipaddress": [
+        "65.254.247.224"
+      ],
+      "smtpserver": "PN2P287MB0160.INDP287.PROD.OUTLOOK.COM",
+      "tlsversion": "not available",
+      "list_unsubscribe_urls": [],
+      "list_unsubscribe_mailtos": [],
+      "list_unsubscribe_one_click": false
+    },
+    "payload": {
+      "content": "Testing random email generation when no From/To headers are present.\nEOF < /dev/null\n",
+      "links": [],
+      "domains": []
+    }
+  }
+}
