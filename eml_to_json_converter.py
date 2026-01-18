@@ -683,7 +683,7 @@ def parse_eml_to_json(eml_path, tenant_id="2a9c5f75-c7ee-4b9f-9ccc-626ddcbd786a"
                 "replyTo": reply_to_recipients,
                 "receivedDateTime": date_str,
                 "sentDateTime": date_str,
-                "body": {"contentType": content_type, "content": plain_text_content},
+                "body": {"contentType": content_type, "content": body_content},
                 "hasAttachments": has_attachments,
                 "internetMessageId": message_id,
                 "importance": "normal",
@@ -704,7 +704,7 @@ def parse_eml_to_json(eml_path, tenant_id="2a9c5f75-c7ee-4b9f-9ccc-626ddcbd786a"
                 "list_unsubscribe_one_click": False,
             },
             "payload": {
-                "content": plain_text_content if plain_text_content else "",
+                "content": body_content if body_content else "",
                 "links": links,
                 "domains": domains,
             },
