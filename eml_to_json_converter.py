@@ -254,6 +254,29 @@ def extract_email_addresses(header_value):
     return addresses
 
 
+def clean_text_content(text):
+    """Clean up text content by removing excessive whitespace and newlines"""
+    if not text:
+        return ""
+
+    # Decode HTML entities
+    text = html.unescape(text)
+
+    # Remove HTML tags if present
+    text = re.sub(r"<[^>]+>", " ", text)
+
+    # Replace multiple newlines/carriage returns with single space
+    text = re.sub(r"[\r\n]+", " ", text)
+
+    # Replace multiple spaces/tabs with single space
+    text = re.sub(r"[ \t]+", " ", text)
+
+    # Remove leading/trailing whitespace
+    text = text.strip()
+
+    return text
+
+
 def extract_html_text(html_content):
     """Extract text from HTML content"""
     # Remove HTML tags
@@ -499,15 +522,17 @@ def parse_eml_to_json(eml_path, tenant_id="2a9c5f75-c7ee-4b9f-9ccc-626ddcbd786a"
     # Extract links and domains from any content (HTML or text)
     links = []
     domains = []
-    plain_text_content = body_content
 
     # Always extract links, regardless of content type
     links = extract_links_from_content(body_content)
     domains = extract_domains_from_links(links)
 
-    # Extract plain text if HTML
+    # Extract plain text for payload (keep original formatting with newlines)
     if content_type == "html":
         plain_text_content = extract_html_text(body_content)
+    else:
+        # Keep original text content with newlines
+        plain_text_content = body_content
 
     # Extract attachments
     has_attachments = False
@@ -658,7 +683,7 @@ def parse_eml_to_json(eml_path, tenant_id="2a9c5f75-c7ee-4b9f-9ccc-626ddcbd786a"
                 "replyTo": reply_to_recipients,
                 "receivedDateTime": date_str,
                 "sentDateTime": date_str,
-                "body": {"contentType": content_type, "content": body_content},
+                "body": {"contentType": content_type, "content": plain_text_content},
                 "hasAttachments": has_attachments,
                 "internetMessageId": message_id,
                 "importance": "normal",
